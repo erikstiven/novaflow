@@ -1,17 +1,89 @@
 <?php
 $colors = [
-  ['Apache', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80'],
-  ['Black Diamond', 'https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?auto=format&fit=crop&w=500&q=80'],
-  ['Caramel', 'https://images.unsplash.com/photo-1616711906333-23cf8f69d04f?auto=format&fit=crop&w=500&q=80'],
-  ['Black Pearl', 'https://images.unsplash.com/photo-1534271057238-c2c170a76672?auto=format&fit=crop&w=500&q=80'],
-  ['Coral', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80'],
-  ['Dark Brown', 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=80'],
-  ['Grey Blend', 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=500&q=80'],
-  ['Multicolor Flint', 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=500&q=80'],
-  ['Ozark', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=500&q=80'],
-  ['Pearl', 'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=500&q=80'],
-  ['Mini Pearl', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=500&q=80'],
-  ['Razorback Red', 'https://images.unsplash.com/photo-1516557070061-c3d1653fa646?auto=format&fit=crop&w=500&q=80'],
+  [
+    'name' => 'Apache',
+    'image' => 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80',
+    'meaning' => 'Warm natural character with an earthy, welcoming finish.',
+    'what' => 'A mixed pebble blend with brown, beige, red and black tones.',
+    'use' => 'Ideal for patios, walkways, pool borders and decorative floors.',
+  ],
+  [
+    'name' => 'Black Diamond',
+    'image' => 'https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?auto=format&fit=crop&w=500&q=80',
+    'meaning' => 'Modern elegance with a premium high-contrast look.',
+    'what' => 'Deep black stones with bright mineral highlights.',
+    'use' => 'Best for contemporary interiors, commercial spaces and accents.',
+  ],
+  [
+    'name' => 'Caramel',
+    'image' => 'https://images.unsplash.com/photo-1616711906333-23cf8f69d04f?auto=format&fit=crop&w=500&q=80',
+    'meaning' => 'Warmth, comfort and a soft natural feel.',
+    'what' => 'Golden, beige and honey-toned pebble blend.',
+    'use' => 'Great for residential patios, terraces and pool edges.',
+  ],
+  [
+    'name' => 'Black Pearl',
+    'image' => 'https://images.unsplash.com/photo-1534271057238-c2c170a76672?auto=format&fit=crop&w=500&q=80',
+    'meaning' => 'Sophisticated depth with a refined natural texture.',
+    'what' => 'Dark stones with grey, white and brown accents.',
+    'use' => 'Ideal for modern interiors, terraces and commercial floors.',
+  ],
+  [
+    'name' => 'Coral',
+    'image' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80',
+    'meaning' => 'Fresh energy inspired by coastal spaces.',
+    'what' => 'Soft coral, peach, beige and light pebble tones.',
+    'use' => 'Perfect for pool decks, relaxing patios and outdoor areas.',
+  ],
+  [
+    'name' => 'Dark Brown',
+    'image' => 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=80',
+    'meaning' => 'Stable, grounded and naturally durable.',
+    'what' => 'Dark brown, chocolate and amber pebble mix.',
+    'use' => 'Strong option for entrances, terraces and high-traffic areas.',
+  ],
+  [
+    'name' => 'Grey Blend',
+    'image' => 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=500&q=80',
+    'meaning' => 'Clean balance with a neutral modern profile.',
+    'what' => 'Grey, white, beige and charcoal stone mix.',
+    'use' => 'Great for minimal patios, pool areas and contemporary spaces.',
+  ],
+  [
+    'name' => 'Multicolor Flint',
+    'image' => 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=500&q=80',
+    'meaning' => 'Natural variety, movement and visual character.',
+    'what' => 'Red, brown, black, yellow and grey pebble tones.',
+    'use' => 'Ideal for rustic exteriors and surfaces that need contrast.',
+  ],
+  [
+    'name' => 'Ozark',
+    'image' => 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=500&q=80',
+    'meaning' => 'Strength, durability and a classic natural look.',
+    'what' => 'Earth-toned stones with rustic texture.',
+    'use' => 'Perfect for walkways, terraces and natural-style projects.',
+  ],
+  [
+    'name' => 'Pearl',
+    'image' => 'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=500&q=80',
+    'meaning' => 'Bright, clean and refined simplicity.',
+    'what' => 'Light stones in white, cream and soft grey tones.',
+    'use' => 'Best for interiors, pool areas and bright minimalist spaces.',
+  ],
+  [
+    'name' => 'Mini Pearl',
+    'image' => 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=500&q=80',
+    'meaning' => 'Delicate detail with a smooth, even look.',
+    'what' => 'Small light stones with fine texture.',
+    'use' => 'Ideal for showers, pool borders and anti-slip surfaces.',
+  ],
+  [
+    'name' => 'Razorback Red',
+    'image' => 'https://images.unsplash.com/photo-1516557070061-c3d1653fa646?auto=format&fit=crop&w=500&q=80',
+    'meaning' => 'Bold energy with a distinctive warm finish.',
+    'what' => 'Red, terracotta, brown and amber pebble mix.',
+    'use' => 'Great for exterior accents, entrances and standout terraces.',
+  ],
 ];
 
 $projects = [
@@ -33,6 +105,10 @@ $projects = [
 </head>
 <body>
   <header class="site-header">
+    <a class="header-logo" href="#home" aria-label="NovaFlow Surfaces">
+      <img src="assets/images/logo.png" alt="NovaFlow Surfaces">
+    </a>
+
     <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -46,17 +122,14 @@ $projects = [
       <a href="#contact">Contact</a>
     </nav>
 
+    <div class="header-cta">
+      <a class="phone" href="tel:5187207248">518- 720 7248</a>
+      <a class="btn btn-primary" href="#contact">Get Free Estimate</a>
+    </div>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <a class="hero-logo" href="#home" aria-label="NovaFlow Surfaces">
-        <img src="assets/images/logo.png" alt="NovaFlow Surfaces">
-      </a>
-      <div class="hero-top-cta">
-        <a class="phone" href="tel:5187207248">518- 720 7248</a>
-        <a class="btn btn-primary" href="#contact">Get Free Estimate</a>
-      </div>
       <div class="hero-content">
         <h1>Beautiful Surfaces.<span>Built to Last.</span></h1>
         <p>Premium pebble flooring, epoxy coatings & polyaspartic systems for residential and commercial properties.</p>
@@ -96,16 +169,22 @@ $projects = [
         <p>Explore our premium pebble flooring color options designed for any space.</p>
       </div>
 
-      <div class="color-grid">
-        <?php foreach ($colors as [$name, $image]) : ?>
+      <div class="color-carousel">
+        <button class="color-arrow color-arrow-left" type="button" aria-label="Previous colors">&lsaquo;</button>
+        <div class="color-track" aria-label="Pebble color carousel">
+        <?php foreach ($colors as $color) : ?>
           <article class="color-card">
-            <img src="<?= htmlspecialchars($image) ?>" alt="<?= htmlspecialchars($name) ?>">
-            <div>
-              <h3><?= htmlspecialchars($name) ?></h3>
-              <a href="#projects">View Projects</a>
+            <img src="<?= htmlspecialchars($color['image']) ?>" alt="<?= htmlspecialchars($color['name']) ?>">
+            <div class="color-card-body">
+              <h3><?= htmlspecialchars($color['name']) ?></h3>
+              <p><strong>Meaning:</strong> <?= htmlspecialchars($color['meaning']) ?></p>
+              <p><strong>What it is:</strong> <?= htmlspecialchars($color['what']) ?></p>
+              <p><strong>Use:</strong> <?= htmlspecialchars($color['use']) ?></p>
             </div>
           </article>
         <?php endforeach; ?>
+        </div>
+        <button class="color-arrow color-arrow-right" type="button" aria-label="Next colors">&rsaquo;</button>
       </div>
     </section>
 

@@ -50,3 +50,27 @@ if ('IntersectionObserver' in window) {
 
   sections.forEach((section) => sectionObserver.observe(section));
 }
+
+document.querySelectorAll('.color-carousel').forEach((carousel) => {
+  const track = carousel.querySelector('.color-track');
+  const previous = carousel.querySelector('.color-arrow-left');
+  const next = carousel.querySelector('.color-arrow-right');
+
+  if (!track || !previous || !next) return;
+
+  const getStep = () => {
+    const card = track.querySelector('.color-card');
+    if (!card) return track.clientWidth;
+
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    return card.getBoundingClientRect().width + gap;
+  };
+
+  previous.addEventListener('click', () => {
+    track.scrollBy({ left: -getStep(), behavior: 'smooth' });
+  });
+
+  next.addEventListener('click', () => {
+    track.scrollBy({ left: getStep(), behavior: 'smooth' });
+  });
+});
