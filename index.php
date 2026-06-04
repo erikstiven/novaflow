@@ -33,19 +33,12 @@ $projects = [
 </head>
 <body>
   <header class="site-header">
-    <a class="logo" href="#" aria-label="NovaFlow Surfaces">
-      <span class="logo-mark">NF</span>
-      <span class="logo-text">NOVA<span>FLOW</span></span>
-      <small>SURFACES</small>
-      <em>PREMIUM SURFACE SOLUTIONS</em>
-    </a>
-
     <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
 
     <nav class="main-nav" aria-label="Main navigation">
-      <a class="active" href="#">Home</a>
+      <a class="active" href="#home">Home</a>
       <a href="#services">Services</a>
       <a href="#colors">Colors</a>
       <a href="#projects">Projects</a>
@@ -53,14 +46,17 @@ $projects = [
       <a href="#contact">Contact</a>
     </nav>
 
-    <div class="header-cta">
-      <a class="phone" href="tel:5187207248">518-720-7248</a>
-      <a class="btn btn-primary" href="#contact">Get Free Estimate</a>
-    </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" id="home">
+      <a class="hero-logo" href="#home" aria-label="NovaFlow Surfaces">
+        <img src="assets/images/logo.png" alt="NovaFlow Surfaces">
+      </a>
+      <div class="hero-top-cta">
+        <a class="phone" href="tel:5187207248">518- 720 7248</a>
+        <a class="btn btn-primary" href="#contact">Get Free Estimate</a>
+      </div>
       <div class="hero-content">
         <h1>Beautiful Surfaces.<span>Built to Last.</span></h1>
         <p>Premium pebble flooring, epoxy coatings & polyaspartic systems for residential and commercial properties.</p>
@@ -73,22 +69,22 @@ $projects = [
 
     <section class="trust" id="services" aria-label="Services">
       <article>
-        <span class="line-icon">shield</span>
+        <span class="line-icon" aria-hidden="true"><img src="assets/images/1.png" alt=""></span>
         <h2>Fully Insured</h2>
         <p>Complete protection for your peace of mind.</p>
       </article>
       <article>
-        <span class="line-icon">diamond</span>
+        <span class="line-icon" aria-hidden="true"><img src="assets/images/2.png" alt=""></span>
         <h2>Premium Materials</h2>
         <p>High performance products that stand the test of time.</p>
       </article>
       <article>
-        <span class="line-icon">wrench</span>
+        <span class="line-icon" aria-hidden="true"><img src="assets/images/3.png" alt=""></span>
         <h2>Expert Installation</h2>
         <p>Skilled craftsmanship with exceptional detail.</p>
       </article>
       <article>
-        <span class="line-icon">building</span>
+        <span class="line-icon" aria-hidden="true"><img src="assets/images/4.png" alt=""></span>
         <h2>Residential & Commercial</h2>
         <p>Beautiful surfaces for homes, businesses and everything in between.</p>
       </article>
@@ -202,16 +198,13 @@ $projects = [
   </main>
 
   <footer class="site-footer">
-    <a class="logo footer-logo" href="#" aria-label="NovaFlow Surfaces">
-      <span class="logo-mark">NF</span>
-      <span class="logo-text">NOVA<span>FLOW</span></span>
-      <small>SURFACES</small>
-      <em>PREMIUM SURFACE SOLUTIONS</em>
+    <a class="logo footer-logo" href="#home" aria-label="NovaFlow Surfaces">
+      <img src="assets/images/logo.png" alt="NovaFlow Surfaces">
     </a>
 
     <div class="quick-links">
       <h2>Quick Links</h2>
-      <a href="#">Home</a>
+      <a href="#home">Home</a>
       <a href="#services">Services</a>
       <a href="#colors">Colors</a>
       <a href="#projects">Projects</a>
