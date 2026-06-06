@@ -74,3 +74,60 @@ document.querySelectorAll('.color-carousel').forEach((carousel) => {
     track.scrollBy({ left: getStep(), behavior: 'smooth' });
   });
 });
+
+const lightbox = document.querySelector('.image-lightbox');
+const lightboxImage = lightbox?.querySelector('img');
+const lightboxClose = lightbox?.querySelector('.lightbox-close');
+
+const closeLightbox = () => {
+  if (!lightbox || !lightboxImage) return;
+  lightbox.classList.remove('is-open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  lightboxImage.src = '';
+  lightboxImage.alt = '';
+  document.body.style.overflow = '';
+};
+
+document.querySelectorAll('.color-zoom img, .project-zoom img').forEach((image) => {
+  image.closest('.color-zoom, .project-zoom')?.addEventListener('click', () => {
+    if (!lightbox || !lightboxImage) return;
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt;
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+lightboxClose?.addEventListener('click', closeLightbox);
+
+lightbox?.addEventListener('click', (event) => {
+  if (event.target === lightbox) closeLightbox();
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeLightbox();
+});
+
+const formModal = document.querySelector('[data-form-modal]');
+
+const closeFormModal = () => {
+  if (!formModal) return;
+  formModal.classList.remove('is-open');
+  formModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('form-modal-open');
+
+  if (window.location.search.includes('form=')) {
+    window.history.replaceState(null, '', window.location.pathname);
+  }
+};
+
+formModal?.querySelector('.form-modal-close')?.addEventListener('click', closeFormModal);
+
+formModal?.addEventListener('click', (event) => {
+  if (event.target === formModal) closeFormModal();
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeFormModal();
+});
