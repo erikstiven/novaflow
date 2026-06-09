@@ -205,12 +205,16 @@ $projects = [
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NovaFlow Surfaces</title>
   <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpeg" href="assets/images/logo-site.jpeg">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body class="<?= $formStatus ? 'form-modal-open' : '' ?>">
   <header class="site-header">
     <a class="header-logo" href="#home" aria-label="NovaFlow Surfaces">
-      <img src="assets/images/logo.png" alt="NovaFlow Surfaces">
+      <img src="assets/images/logo-site.jpeg" alt="NovaFlow Surfaces">
     </a>
 
     <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
@@ -282,9 +286,19 @@ $projects = [
               <img src="<?= htmlspecialchars($color['image']) ?>" alt="<?= htmlspecialchars($color['name']) ?>">
             </button>
             <div class="color-card-body">
-              <p><strong>Meaning:</strong> <?= htmlspecialchars($color['meaning']) ?></p>
-              <p><strong>What it is:</strong> <?= htmlspecialchars($color['what']) ?></p>
-              <p><strong>Use:</strong> <?= htmlspecialchars($color['use']) ?></p>
+              <h3><?= htmlspecialchars($color['name']) ?></h3>
+              <div class="color-detail">
+                <span>Meaning</span>
+                <p><?= htmlspecialchars($color['meaning']) ?></p>
+              </div>
+              <div class="color-detail">
+                <span>What it is</span>
+                <p><?= htmlspecialchars($color['what']) ?></p>
+              </div>
+              <div class="color-detail">
+                <span>Best use</span>
+                <p><?= htmlspecialchars($color['use']) ?></p>
+              </div>
             </div>
           </article>
         <?php endforeach; ?>
@@ -312,34 +326,40 @@ $projects = [
 
     <section class="section project-video">
       <div class="section-title">
-        <h2>Project Video</h2>
+        <h2>Project Videos</h2>
       </div>
 
-      <video controls preload="metadata">
-        <source src="assets/images/projects/video.mp4" type="video/mp4">
-      </video>
+      <div class="video-grid">
+        <article class="video-card">
+          <video controls preload="metadata">
+            <source src="assets/images/projects/video.mp4" type="video/mp4">
+          </video>
+        </article>
+        <article class="video-card">
+          <video controls preload="metadata">
+            <source src="assets/images/projects/video2.mp4" type="video/mp4">
+          </video>
+        </article>
+      </div>
     </section>
 
     <section class="section split-section" id="about">
       <div class="before">
         <h2>Before & After</h2>
         <div class="before-grid">
-          <article class="compare-card">
-            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=700&q=80" alt="Driveway before and after">
+          <article class="compare-card" style="--compare-position: 50%;">
+            <div class="compare-image compare-after">
+              <img src="assets/images/antes_despues/despues.jpg" alt="After surface transformation">
+            </div>
+            <div class="compare-image compare-before">
+              <img src="assets/images/antes_despues/antes.jpg" alt="Before surface transformation">
+            </div>
             <span class="divider"></span>
             <b>Before</b>
             <strong>After</strong>
-            <i></i>
-          </article>
-          <article class="compare-card">
-            <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=700&q=80" alt="Pool deck before and after">
-            <span class="divider"></span>
-            <b>Before</b>
-            <strong>After</strong>
-            <i></i>
+            <button class="compare-handle" type="button" aria-label="Drag to compare before and after"></button>
           </article>
         </div>
-        <a class="btn btn-outline centered" href="#">View More Transformations</a>
       </div>
 
       <aside class="serving">
@@ -406,7 +426,7 @@ $projects = [
 
   <footer class="site-footer">
     <a class="logo footer-logo" href="#home" aria-label="NovaFlow Surfaces">
-      <img src="assets/images/logo.png" alt="NovaFlow Surfaces">
+      <img src="assets/images/logo-site.jpeg" alt="NovaFlow Surfaces">
     </a>
 
     <div class="quick-links">

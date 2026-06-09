@@ -109,6 +109,52 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') closeLightbox();
 });
 
+document.querySelectorAll('.compare-card').forEach((card) => {
+  const handle = card.querySelector('.compare-handle');
+  if (!handle) return;
+
+  const syncWidth = () => {
+    card.style.setProperty('--compare-card-width', `${card.getBoundingClientRect().width}px`);
+  };
+
+  const setPosition = (clientX) => {
+    const rect = card.getBoundingClientRect();
+    const rawPosition = ((clientX - rect.left) / rect.width) * 100;
+    const position = Math.min(96, Math.max(4, rawPosition));
+    card.style.setProperty('--compare-position', `${position}%`);
+  };
+
+  syncWidth();
+  window.addEventListener('resize', syncWidth, { passive: true });
+  card.querySelectorAll('img').forEach((image) => {
+    if (image.complete) return;
+    image.addEventListener('load', syncWidth, { once: true });
+  });
+
+  card.addEventListener('pointerdown', (event) => {
+    syncWidth();
+    setPosition(event.clientX);
+    card.setPointerCapture(event.pointerId);
+  });
+
+  card.addEventListener('pointermove', (event) => {
+    if (!card.hasPointerCapture(event.pointerId)) return;
+    setPosition(event.clientX);
+  });
+
+  card.addEventListener('pointerup', (event) => {
+    if (card.hasPointerCapture(event.pointerId)) {
+      card.releasePointerCapture(event.pointerId);
+    }
+  });
+
+  card.addEventListener('pointercancel', (event) => {
+    if (card.hasPointerCapture(event.pointerId)) {
+      card.releasePointerCapture(event.pointerId);
+    }
+  });
+});
+
 const formModal = document.querySelector('[data-form-modal]');
 
 const closeFormModal = () => {
