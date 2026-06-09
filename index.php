@@ -208,7 +208,7 @@ $projects = [
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/jpeg" href="assets/images/logo-site.jpeg">
+  <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpeg">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body class="<?= $formStatus ? 'form-modal-open' : '' ?>">
