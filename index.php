@@ -239,8 +239,9 @@ $projects = [
   <main>
     <section class="hero" id="home">
       <div class="hero-content">
-        <h1>Beautiful Surfaces.<span>Built to Last.</span></h1>
-        <p>Premium pebble flooring, epoxy coatings & polyaspartic systems for residential and commercial properties.</p>
+        <h1>Resin Bound<span>Surfaces.</span></h1>
+        <p class="hero-kicker">Built to Last.</p>
+        <p>Premium Resin Bound driveways, patios and pathways built for beauty and durability.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Get Free Estimate <span class="link-icon" aria-hidden="true"></span></a>
           <a class="btn btn-outline hero-projects" href="#projects">View Projects</a>
