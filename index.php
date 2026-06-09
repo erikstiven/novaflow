@@ -388,15 +388,15 @@ $projects = [
       <div class="contact-info">
         <a class="contact-link" href="tel:5187207248">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6.5 6.5l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.5.6A2 2 0 0 1 22 16.9z"/></svg>
-          <span>518-720-7248</span>
+          <span><strong>Call Us</strong>518-720-7248</span>
         </a>
         <a class="contact-link" href="mailto:novaflowsurfaces@gmail.com">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
-          <span>novaflowsurfaces@gmail.com</span>
+          <span><strong>Email Us</strong>novaflowsurfaces@gmail.com</span>
         </a>
         <address class="contact-link">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/><path d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-          <span>950 New Loudon Rd,<br>Latham, NY 12144</span>
+          <span><strong>Visit Us</strong>950 New Loudon Rd,<br>Latham, NY 12144</span>
         </address>
       </div>
 

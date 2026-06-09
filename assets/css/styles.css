@@ -866,6 +866,15 @@ img {
   overflow-wrap: anywhere;
 }
 
+.contact-link strong {
+  display: block;
+  margin-bottom: 2px;
+  color: #071827;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
 .contact-form {
   display: grid;
   gap: 12px;
