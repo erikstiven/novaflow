@@ -24,6 +24,7 @@ html {
 body {
   margin: 0;
   width: 100%;
+  padding-top: 92px;
   overflow-x: hidden;
   background: #fff;
   color: var(--text);
@@ -63,9 +64,10 @@ img {
 }
 
 .site-header {
-  position: sticky;
-  z-index: 20;
+  position: fixed;
+  z-index: 30;
   top: 0;
+  left: 0;
   width: 100%;
   min-height: 92px;
   display: grid;
