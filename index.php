@@ -364,22 +364,33 @@ $projects = [
       </div>
 
       <aside class="serving">
-        <h2>Proudly Serving</h2>
-        <ul class="serving-list">
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.1 7-13A7 7 0 0 0 5 9c0 6.9 7 13 7 13z"/><circle cx="12" cy="9" r="2.4"/></svg><span>New York</span></li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.1 7-13A7 7 0 0 0 5 9c0 6.9 7 13 7 13z"/><circle cx="12" cy="9" r="2.4"/></svg><span>Vermont</span></li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.1 7-13A7 7 0 0 0 5 9c0 6.9 7 13 7 13z"/><circle cx="12" cy="9" r="2.4"/></svg><span>Massachusetts</span></li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.1 7-13A7 7 0 0 0 5 9c0 6.9 7 13 7 13z"/><circle cx="12" cy="9" r="2.4"/></svg><span>New Jersey</span></li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.1 7-13A7 7 0 0 0 5 9c0 6.9 7 13 7 13z"/><circle cx="12" cy="9" r="2.4"/></svg><span>Connecticut</span></li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.1 7-13A7 7 0 0 0 5 9c0 6.9 7 13 7 13z"/><circle cx="12" cy="9" r="2.4"/></svg><span>Pennsylvania</span></li>
-        </ul>
+        <div class="serving-kicker"><span></span> Nationwide Resin Bound Experts</div>
+        <div class="serving-headline">
+          <svg class="flag-icon" viewBox="0 0 7410 3900" aria-hidden="true">
+            <path fill="#b22234" d="M0 0h7410v3900H0z"/>
+            <path stroke="#fff" stroke-width="300" d="M0 450h7410M0 1050h7410M0 1650h7410M0 2250h7410M0 2850h7410M0 3450h7410"/>
+            <path fill="#3c3b6e" d="M0 0h2964v2100H0z"/>
+            <g fill="#fff">
+              <circle cx="247" cy="175" r="45"/><circle cx="741" cy="175" r="45"/><circle cx="1235" cy="175" r="45"/><circle cx="1729" cy="175" r="45"/><circle cx="2223" cy="175" r="45"/><circle cx="2717" cy="175" r="45"/>
+              <circle cx="494" cy="350" r="45"/><circle cx="988" cy="350" r="45"/><circle cx="1482" cy="350" r="45"/><circle cx="1976" cy="350" r="45"/><circle cx="2470" cy="350" r="45"/>
+              <circle cx="247" cy="525" r="45"/><circle cx="741" cy="525" r="45"/><circle cx="1235" cy="525" r="45"/><circle cx="1729" cy="525" r="45"/><circle cx="2223" cy="525" r="45"/><circle cx="2717" cy="525" r="45"/>
+              <circle cx="494" cy="700" r="45"/><circle cx="988" cy="700" r="45"/><circle cx="1482" cy="700" r="45"/><circle cx="1976" cy="700" r="45"/><circle cx="2470" cy="700" r="45"/>
+              <circle cx="247" cy="875" r="45"/><circle cx="741" cy="875" r="45"/><circle cx="1235" cy="875" r="45"/><circle cx="1729" cy="875" r="45"/><circle cx="2223" cy="875" r="45"/><circle cx="2717" cy="875" r="45"/>
+              <circle cx="494" cy="1050" r="45"/><circle cx="988" cy="1050" r="45"/><circle cx="1482" cy="1050" r="45"/><circle cx="1976" cy="1050" r="45"/><circle cx="2470" cy="1050" r="45"/>
+              <circle cx="247" cy="1225" r="45"/><circle cx="741" cy="1225" r="45"/><circle cx="1235" cy="1225" r="45"/><circle cx="1729" cy="1225" r="45"/><circle cx="2223" cy="1225" r="45"/><circle cx="2717" cy="1225" r="45"/>
+              <circle cx="494" cy="1400" r="45"/><circle cx="988" cy="1400" r="45"/><circle cx="1482" cy="1400" r="45"/><circle cx="1976" cy="1400" r="45"/><circle cx="2470" cy="1400" r="45"/>
+            </g>
+          </svg>
+          <h2>Headquartered <span>in <strong>New York</strong></span></h2>
+        </div>
+        <p class="serving-copy">Serving Residential and Commercial Clients Throughout the United States.</p>
         <div class="insured-box">
           <span class="insured-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19 6v5c0 4.6-2.9 8.6-7 10-4.1-1.4-7-5.4-7-10V6l7-3z"/><path d="m8.8 12.1 2.1 2.1 4.3-4.8"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19 6v5c0 4.6-2.9 8.6-7 10-4.1-1.4-7-5.4-7-10V6l7-3z"/><path d="m7.8 12 2.8 2.8 5.6-6.1"/></svg>
           </span>
           <div>
             <h3>Fully Insured</h3>
-            <p>Your project is protected from start to finish.</p>
+            <p>Your project is protected from consultation to final installation with <strong>full insurance coverage</strong> for complete peace of mind.</p>
           </div>
         </div>
       </aside>
