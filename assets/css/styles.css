@@ -664,7 +664,7 @@ img {
 
 .before-grid {
   display: grid;
-  justify-items: start;
+  justify-items: center;
   gap: 14px;
   margin: 18px 0 14px;
 }
@@ -673,7 +673,7 @@ img {
   position: relative;
   display: block;
   overflow: hidden;
-  width: min(100%, 708px);
+  width: min(100%, 560px);
   min-height: 260px;
   aspect-ratio: 708 / 925;
   border: 1px solid rgba(14, 42, 64, .14);
