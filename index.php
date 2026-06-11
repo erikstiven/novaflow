@@ -330,17 +330,22 @@ $projects = [
         <h2>Project Videos</h2>
       </div>
 
-      <div class="video-grid">
-        <article class="video-card">
-          <video controls preload="metadata">
-            <source src="assets/images/projects/video.mp4" type="video/mp4">
-          </video>
-        </article>
-        <article class="video-card">
-          <video controls preload="metadata">
-            <source src="assets/images/projects/video2.mp4" type="video/mp4">
-          </video>
-        </article>
+      <div class="video-carousel" data-video-carousel>
+        <button class="video-arrow video-arrow-left" type="button" aria-label="Previous video"></button>
+        <div class="video-track">
+          <article class="video-card">
+            <video controls preload="metadata" playsinline poster="assets/images/projects/video-poster.jpg">
+              <source src="assets/images/projects/video.mp4" type="video/mp4">
+            </video>
+          </article>
+          <article class="video-card">
+            <video controls preload="metadata" playsinline poster="assets/images/projects/video2-poster.jpg">
+              <source src="assets/images/projects/video2.mp4" type="video/mp4">
+            </video>
+          </article>
+        </div>
+        <button class="video-arrow video-arrow-right" type="button" aria-label="Next video"></button>
+        <div class="video-dots" aria-hidden="true"></div>
       </div>
     </section>
 
