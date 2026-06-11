@@ -882,6 +882,19 @@ img {
   color: #0645c9;
 }
 
+.section.image-section {
+  padding: 0;
+  background: #02070b;
+}
+
+.image-section img {
+  width: 100%;
+  max-width: 1780px;
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
+}
+
 .contact {
   display: grid;
   gap: 24px;
@@ -1286,6 +1299,7 @@ img {
   }
 
   .compare-card {
+    width: min(100%, 320px);
     min-height: 0;
     aspect-ratio: 708 / 925;
     border-radius: 6px;
@@ -1514,6 +1528,10 @@ img {
   .serving-headline {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+
+  .compare-card {
+    width: min(100%, 292px);
   }
 
   .serving-copy {

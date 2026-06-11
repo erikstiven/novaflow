@@ -398,6 +398,10 @@ $projects = [
       </div>
     </section>
 
+    <section class="section image-section" aria-label="Resin bound maintenance">
+      <img src="assets/images/seccion.jpeg" alt="Resin Bound maintenance tips from NovaFlow Surfaces">
+    </section>
+
     <section class="contact" id="contact">
       <div class="contact-info">
         <a class="contact-link" href="tel:5187207248">
