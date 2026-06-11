@@ -197,6 +197,9 @@ $projects = [
   ['Patios', 'chair', 'assets/images/projects/3.jpg'],
   ['Walkways', 'route', 'assets/images/projects/4.jpg'],
 ];
+
+$stylesVersion = file_exists(__DIR__ . '/assets/css/styles.css') ? filemtime(__DIR__ . '/assets/css/styles.css') : time();
+$scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR__ . '/assets/js/main.js') : time();
 ?>
 <!doctype html>
 <html lang="en">
@@ -209,7 +212,7 @@ $projects = [
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpeg">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=<?= $stylesVersion ?>">
 </head>
 <body class="<?= $formStatus ? 'form-modal-open' : '' ?>">
   <header class="site-header">
@@ -408,6 +411,14 @@ $projects = [
     </section>
 
     <section class="section image-section" aria-label="Resin bound maintenance">
+      <div class="image-section-title">
+        <span></span>
+        <div>
+          <h2>Resin Bound Care &amp; Maintenance</h2>
+          <p>Simple steps to keep your surface looking its best.</p>
+        </div>
+        <span></span>
+      </div>
       <img src="assets/images/seccion.jpeg" alt="Resin Bound maintenance tips from NovaFlow Surfaces">
     </section>
 
@@ -511,6 +522,6 @@ $projects = [
     </div>
   <?php endif; ?>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=<?= $scriptsVersion ?>"></script>
 </body>
 </html>
