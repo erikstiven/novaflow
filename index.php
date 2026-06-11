@@ -315,8 +315,6 @@ $projects = [
       </div>
 
       <div class="project-grid">
-        <button class="project-arrow project-arrow-left" type="button" aria-label="Previous project">&lsaquo;</button>
-        <div class="project-images">
         <?php foreach ($projects as [$name, $icon, $image]) : ?>
           <article class="project-card">
             <button class="project-zoom" type="button" aria-label="Zoom <?= htmlspecialchars($name) ?>">
@@ -324,8 +322,6 @@ $projects = [
             </button>
           </article>
         <?php endforeach; ?>
-        </div>
-        <button class="project-arrow project-arrow-right" type="button" aria-label="Next project">&rsaquo;</button>
       </div>
     </section>
 
@@ -334,78 +330,81 @@ $projects = [
         <h2>Project Videos</h2>
       </div>
 
-      <div class="video-grid">
-        <button class="video-arrow video-arrow-left" type="button" aria-label="Previous video">&lsaquo;</button>
-        <div class="video-images">
+      <div class="video-carousel" data-video-carousel>
+        <button class="video-arrow video-arrow-left" type="button" aria-label="Previous video"></button>
+        <div class="video-track">
           <article class="video-card">
-            <video controls autoplay muted playsinline preload="metadata">
+            <video controls preload="metadata" playsinline poster="assets/images/projects/video-poster.jpg">
               <source src="assets/images/projects/video.mp4" type="video/mp4">
             </video>
           </article>
           <article class="video-card">
-            <video controls autoplay muted playsinline preload="metadata">
+            <video controls preload="metadata" playsinline poster="assets/images/projects/video2-poster.jpg">
               <source src="assets/images/projects/video2.mp4" type="video/mp4">
             </video>
           </article>
         </div>
-        <button class="video-arrow video-arrow-right" type="button" aria-label="Next video">&rsaquo;</button>
+        <button class="video-arrow video-arrow-right" type="button" aria-label="Next video"></button>
+        <div class="video-dots" aria-hidden="true"></div>
       </div>
     </section>
 
     <section class="section split-section" id="about">
-      <div class="before">
-        <h2>Before & After</h2>
-        <div class="before-grid">
-          <article class="compare-card" style="--compare-position: 50%;">
-            <div class="compare-image compare-after">
-              <img src="assets/images/antes_despues/despues.jpg" alt="After surface transformation">
-            </div>
-            <div class="compare-image compare-before">
-              <img src="assets/images/antes_despues/antes.jpg" alt="Before surface transformation">
-            </div>
-            <span class="divider"></span>
-            <b>Before</b>
-            <strong>After</strong>
-            <button class="compare-handle" type="button" aria-label="Drag to compare before and after"></button>
-          </article>
-        </div>
-      </div>
-
-      <aside class="serving">
-        <div class="serving-kicker"><span></span> Nationwide Resin Bound Experts</div>
-        <div class="serving-headline">
-          <svg class="flag-icon" viewBox="0 0 7410 3900" aria-hidden="true">
-            <path fill="#b22234" d="M0 0h7410v3900H0z"/>
-            <path stroke="#fff" stroke-width="300" d="M0 450h7410M0 1050h7410M0 1650h7410M0 2250h7410M0 2850h7410M0 3450h7410"/>
-            <path fill="#3c3b6e" d="M0 0h2964v2100H0z"/>
-            <g fill="#fff">
-              <circle cx="247" cy="175" r="45"/><circle cx="741" cy="175" r="45"/><circle cx="1235" cy="175" r="45"/><circle cx="1729" cy="175" r="45"/><circle cx="2223" cy="175" r="45"/><circle cx="2717" cy="175" r="45"/>
-              <circle cx="494" cy="350" r="45"/><circle cx="988" cy="350" r="45"/><circle cx="1482" cy="350" r="45"/><circle cx="1976" cy="350" r="45"/><circle cx="2470" cy="350" r="45"/>
-              <circle cx="247" cy="525" r="45"/><circle cx="741" cy="525" r="45"/><circle cx="1235" cy="525" r="45"/><circle cx="1729" cy="525" r="45"/><circle cx="2223" cy="525" r="45"/><circle cx="2717" cy="525" r="45"/>
-              <circle cx="494" cy="700" r="45"/><circle cx="988" cy="700" r="45"/><circle cx="1482" cy="700" r="45"/><circle cx="1976" cy="700" r="45"/><circle cx="2470" cy="700" r="45"/>
-              <circle cx="247" cy="875" r="45"/><circle cx="741" cy="875" r="45"/><circle cx="1235" cy="875" r="45"/><circle cx="1729" cy="875" r="45"/><circle cx="2223" cy="875" r="45"/><circle cx="2717" cy="875" r="45"/>
-              <circle cx="494" cy="1050" r="45"/><circle cx="988" cy="1050" r="45"/><circle cx="1482" cy="1050" r="45"/><circle cx="1976" cy="1050" r="45"/><circle cx="2470" cy="1050" r="45"/>
-              <circle cx="247" cy="1225" r="45"/><circle cx="741" cy="1225" r="45"/><circle cx="1235" cy="1225" r="45"/><circle cx="1729" cy="1225" r="45"/><circle cx="2223" cy="1225" r="45"/><circle cx="2717" cy="1225" r="45"/>
-              <circle cx="494" cy="1400" r="45"/><circle cx="988" cy="1400" r="45"/><circle cx="1482" cy="1400" r="45"/><circle cx="1976" cy="1400" r="45"/><circle cx="2470" cy="1400" r="45"/>
-            </g>
-          </svg>
-          <h2>Headquartered <span>in <strong>New York</strong></span></h2>
-        </div>
-        <p class="serving-copy">Serving Residential and Commercial Clients Throughout the United States.</p>
-        <div class="insured-box">
-          <span class="insured-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19 6v5c0 4.6-2.9 8.6-7 10-4.1-1.4-7-5.4-7-10V6l7-3z"/><path d="m7.8 12 2.8 2.8 5.6-6.1"/></svg>
-          </span>
-          <div>
-            <h3>Fully Insured</h3>
-            <p>Your project is protected from consultation to final installation with <strong>full insurance coverage</strong> for complete peace of mind.</p>
+      <div class="split-section-inner">
+        <div class="before">
+          <h2>Before & After</h2>
+          <div class="before-grid">
+            <article class="compare-card" style="--compare-position: 50%;">
+              <div class="compare-image compare-after">
+                <img src="assets/images/antes_despues/despues.jpg" alt="After surface transformation">
+              </div>
+              <div class="compare-image compare-before">
+                <img src="assets/images/antes_despues/antes.jpg" alt="Before surface transformation">
+              </div>
+              <span class="divider"></span>
+              <b>Before</b>
+              <strong>After</strong>
+              <button class="compare-handle" type="button" aria-label="Drag to compare before and after"></button>
+            </article>
           </div>
         </div>
-      </aside>
+
+        <aside class="serving">
+          <div class="serving-kicker"><span></span> Nationwide Resin Bound Experts</div>
+          <div class="serving-headline">
+            <svg class="flag-icon" viewBox="0 0 7410 3900" aria-hidden="true">
+              <path fill="#b22234" d="M0 0h7410v3900H0z"/>
+              <path stroke="#fff" stroke-width="300" d="M0 450h7410M0 1050h7410M0 1650h7410M0 2250h7410M0 2850h7410M0 3450h7410"/>
+              <path fill="#3c3b6e" d="M0 0h2964v2100H0z"/>
+              <g fill="#fff">
+                <circle cx="247" cy="175" r="45"/><circle cx="741" cy="175" r="45"/><circle cx="1235" cy="175" r="45"/><circle cx="1729" cy="175" r="45"/><circle cx="2223" cy="175" r="45"/><circle cx="2717" cy="175" r="45"/>
+                <circle cx="494" cy="350" r="45"/><circle cx="988" cy="350" r="45"/><circle cx="1482" cy="350" r="45"/><circle cx="1976" cy="350" r="45"/><circle cx="2470" cy="350" r="45"/>
+                <circle cx="247" cy="525" r="45"/><circle cx="741" cy="525" r="45"/><circle cx="1235" cy="525" r="45"/><circle cx="1729" cy="525" r="45"/><circle cx="2223" cy="525" r="45"/><circle cx="2717" cy="525" r="45"/>
+                <circle cx="494" cy="700" r="45"/><circle cx="988" cy="700" r="45"/><circle cx="1482" cy="700" r="45"/><circle cx="1976" cy="700" r="45"/><circle cx="2470" cy="700" r="45"/>
+                <circle cx="247" cy="875" r="45"/><circle cx="741" cy="875" r="45"/><circle cx="1235" cy="875" r="45"/><circle cx="1729" cy="875" r="45"/><circle cx="2223" cy="875" r="45"/><circle cx="2717" cy="875" r="45"/>
+                <circle cx="494" cy="1050" r="45"/><circle cx="988" cy="1050" r="45"/><circle cx="1482" cy="1050" r="45"/><circle cx="1976" cy="1050" r="45"/><circle cx="2470" cy="1050" r="45"/>
+                <circle cx="247" cy="1225" r="45"/><circle cx="741" cy="1225" r="45"/><circle cx="1235" cy="1225" r="45"/><circle cx="1729" cy="1225" r="45"/><circle cx="2223" cy="1225" r="45"/><circle cx="2717" cy="1225" r="45"/>
+                <circle cx="494" cy="1400" r="45"/><circle cx="988" cy="1400" r="45"/><circle cx="1482" cy="1400" r="45"/><circle cx="1976" cy="1400" r="45"/><circle cx="2470" cy="1400" r="45"/>
+              </g>
+            </svg>
+            <h2>Headquartered <span>in <strong>New York</strong></span></h2>
+          </div>
+          <p class="serving-copy">Serving Residential and Commercial Clients Throughout the United States.</p>
+          <div class="insured-box">
+            <span class="insured-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19 6v5c0 4.6-2.9 8.6-7 10-4.1-1.4-7-5.4-7-10V6l7-3z"/><path d="m7.8 12 2.8 2.8 5.6-6.1"/></svg>
+            </span>
+            <div>
+              <h3>Fully Insured</h3>
+              <p>Your project is protected from consultation to final installation with <strong>full insurance coverage</strong> for complete peace of mind.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <section class="section section-banner">
-      <img src="assets/images/seccion.jpeg" alt="" class="banner-image">
+    <section class="section image-section" aria-label="Resin bound maintenance">
+      <img src="assets/images/seccion.jpeg" alt="Resin Bound maintenance tips from NovaFlow Surfaces">
     </section>
 
     <section class="contact" id="contact">
