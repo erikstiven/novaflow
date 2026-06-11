@@ -75,68 +75,53 @@ document.querySelectorAll('.color-carousel').forEach((carousel) => {
   });
 });
 
-document.querySelectorAll('[data-video-carousel]').forEach((carousel) => {
-  const track = carousel.querySelector('.video-track');
-  const previous = carousel.querySelector('.video-arrow-left');
-  const next = carousel.querySelector('.video-arrow-right');
-  const dots = carousel.querySelector('.video-dots');
-  const cards = [...carousel.querySelectorAll('.video-card')];
-  const videos = [...carousel.querySelectorAll('video')];
+const projectImages = document.querySelector('.project-images');
+const projectCards = projectImages ? [...projectImages.querySelectorAll('.project-card')] : [];
+const projectPrev = document.querySelector('.project-arrow-left');
+const projectNext = document.querySelector('.project-arrow-right');
+let projectIndex = 0;
 
-  if (!track || !previous || !next || !dots || !cards.length) return;
-
-  cards.forEach((_, index) => {
-    const dot = document.createElement('button');
-    dot.className = 'video-dot';
-    dot.type = 'button';
-    dot.setAttribute('aria-label', `Go to video ${index + 1}`);
-    dot.addEventListener('click', () => {
-      cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    });
-    dots.appendChild(dot);
+const showProject = (index) => {
+  projectCards.forEach((card, i) => {
+    card.classList.toggle('is-active', i === index);
   });
+};
 
-  const dotButtons = [...dots.querySelectorAll('.video-dot')];
-
-  const getActiveIndex = () => {
-    const trackCenter = track.getBoundingClientRect().left + (track.clientWidth / 2);
-    return cards.reduce((closestIndex, card, index) => {
-      const cardRect = card.getBoundingClientRect();
-      const cardCenter = cardRect.left + (cardRect.width / 2);
-      const closestRect = cards[closestIndex].getBoundingClientRect();
-      const closestCenter = closestRect.left + (closestRect.width / 2);
-      return Math.abs(cardCenter - trackCenter) < Math.abs(closestCenter - trackCenter) ? index : closestIndex;
-    }, 0);
-  };
-
-  const updateDots = () => {
-    const activeIndex = getActiveIndex();
-    dotButtons.forEach((dot, index) => {
-      dot.classList.toggle('is-active', index === activeIndex);
-    });
-  };
-
-  const scrollToVideo = (direction) => {
-    const activeIndex = getActiveIndex();
-    const nextIndex = Math.min(cards.length - 1, Math.max(0, activeIndex + direction));
-    cards[nextIndex].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-  };
-
-  previous.addEventListener('click', () => scrollToVideo(-1));
-  next.addEventListener('click', () => scrollToVideo(1));
-  track.addEventListener('scroll', () => window.requestAnimationFrame(updateDots), { passive: true });
-  window.addEventListener('resize', updateDots, { passive: true });
-
-  videos.forEach((video) => {
-    video.addEventListener('play', () => {
-      videos.forEach((otherVideo) => {
-        if (otherVideo !== video) otherVideo.pause();
-      });
-    });
+if (projectCards.length && projectPrev && projectNext) {
+  showProject(0);
+  projectPrev.addEventListener('click', () => {
+    projectIndex = (projectIndex - 1 + projectCards.length) % projectCards.length;
+    showProject(projectIndex);
   });
+  projectNext.addEventListener('click', () => {
+    projectIndex = (projectIndex + 1) % projectCards.length;
+    showProject(projectIndex);
+  });
+}
 
-  updateDots();
-});
+const videoImages = document.querySelector('.video-images');
+const videoCards = videoImages ? [...videoImages.querySelectorAll('.video-card')] : [];
+const videoPrev = document.querySelector('.video-arrow-left');
+const videoNext = document.querySelector('.video-arrow-right');
+let videoIndex = 0;
+
+const showVideo = (index) => {
+  videoCards.forEach((card, i) => {
+    card.classList.toggle('is-active', i === index);
+  });
+};
+
+if (videoCards.length && videoPrev && videoNext) {
+  showVideo(0);
+  videoPrev.addEventListener('click', () => {
+    videoIndex = (videoIndex - 1 + videoCards.length) % videoCards.length;
+    showVideo(videoIndex);
+  });
+  videoNext.addEventListener('click', () => {
+    videoIndex = (videoIndex + 1) % videoCards.length;
+    showVideo(videoIndex);
+  });
+}
 
 const lightbox = document.querySelector('.image-lightbox');
 const lightboxImage = lightbox?.querySelector('img');
