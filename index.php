@@ -314,14 +314,18 @@ $projects = [
         <a href="#">View All Projects <span class="link-icon" aria-hidden="true"></span></a>
       </div>
 
-      <div class="project-grid">
-        <?php foreach ($projects as [$name, $icon, $image]) : ?>
-          <article class="project-card">
-            <button class="project-zoom" type="button" aria-label="Zoom <?= htmlspecialchars($name) ?>">
-              <img src="<?= htmlspecialchars($image) ?>" alt="<?= htmlspecialchars($name) ?>">
-            </button>
-          </article>
-        <?php endforeach; ?>
+      <div class="project-carousel" data-project-carousel>
+        <button class="project-arrow project-arrow-left" type="button" aria-label="Previous project">&lsaquo;</button>
+        <div class="project-grid">
+          <?php foreach ($projects as [$name, $icon, $image]) : ?>
+            <article class="project-card">
+              <button class="project-zoom" type="button" aria-label="Zoom <?= htmlspecialchars($name) ?>">
+                <img src="<?= htmlspecialchars($image) ?>" alt="<?= htmlspecialchars($name) ?>">
+              </button>
+            </article>
+          <?php endforeach; ?>
+        </div>
+        <button class="project-arrow project-arrow-right" type="button" aria-label="Next project">&rsaquo;</button>
       </div>
     </section>
 
@@ -334,12 +338,12 @@ $projects = [
         <button class="video-arrow video-arrow-left" type="button" aria-label="Previous video"></button>
         <div class="video-track">
           <article class="video-card">
-            <video controls preload="metadata" playsinline poster="assets/images/projects/video-poster.jpg">
+            <video controls preload="metadata" autoplay muted playsinline poster="assets/images/projects/video-poster.jpg">
               <source src="assets/images/projects/video.mp4" type="video/mp4">
             </video>
           </article>
           <article class="video-card">
-            <video controls preload="metadata" playsinline poster="assets/images/projects/video2-poster.jpg">
+            <video controls preload="metadata" autoplay muted playsinline poster="assets/images/projects/video2-poster.jpg">
               <source src="assets/images/projects/video2.mp4" type="video/mp4">
             </video>
           </article>

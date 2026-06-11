@@ -437,7 +437,7 @@ img {
 
 .project-zoom {
   display: block;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: .8 / 1;
   overflow: hidden;
 }
 
@@ -626,6 +626,38 @@ img {
   white-space: nowrap;
 }
 
+.project-carousel {
+  position: relative;
+}
+
+.project-arrow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .55);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.project-arrow-left {
+  left: 6px;
+}
+
+.project-arrow-right {
+  right: 6px;
+}
+
 .link-icon {
   display: inline-block;
   width: .7em;
@@ -679,30 +711,22 @@ img {
 }
 
 .video-track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(260px, min(76vw, 380px));
-  gap: 24px;
-  align-items: center;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  scroll-padding-inline: max(22px, calc((100vw - 380px) / 2));
-  scroll-snap-type: x mandatory;
+  display: block;
   padding: 0 max(22px, calc((100vw - 380px) / 2)) 28px;
-  scrollbar-width: none;
-}
-
-.video-track::-webkit-scrollbar {
-  display: none;
 }
 
 .video-card {
+  display: none;
   overflow: hidden;
-  width: 100%;
+  width: min(100%, 380px);
+  margin-inline: auto;
   border-radius: 10px;
   background: #02070b;
   box-shadow: 0 22px 44px rgba(0, 0, 0, .28);
-  scroll-snap-align: center;
+}
+
+.video-card.is-active {
+  display: block;
 }
 
 .project-video video {
@@ -1390,6 +1414,43 @@ img {
     padding-inline: 0;
   }
 
+  .color-arrow {
+    top: 35%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    border: 1px solid rgba(255, 255, 255, .18);
+    background: rgba(4, 9, 14, .46);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .color-arrow-left {
+    left: 8px;
+  }
+
+  .color-arrow-right {
+    right: 8px;
+  }
+
+  .project-grid {
+    display: block;
+  }
+
+  .project-card {
+    display: none;
+  }
+
+  .project-card.is-active {
+    display: block;
+  }
+
+  .project-arrow {
+    display: flex;
+  }
+
   .color-track {
     display: flex;
     gap: 14px;
@@ -1458,37 +1519,71 @@ img {
   }
 
   .video-track {
-    grid-auto-columns: minmax(246px, 72vw);
-    gap: 18px;
-    scroll-padding-inline: 54px;
-    padding-inline: 54px;
+    display: block;
+    padding: 0 22px;
   }
 
   .video-arrow {
-    top: calc(50% - 24px);
-    width: 42px;
-    height: 42px;
-    border-width: 3px;
-  }
-
-  .video-arrow::before {
-    width: 12px;
-    height: 12px;
-    border-top-width: 4px;
-    border-right-width: 4px;
+    top: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    border: 0;
+    background: rgba(0, 0, 0, .55);
+    color: #fff;
+    box-shadow: none;
   }
 
   .video-arrow-left {
-    left: 10px;
+    left: 6px;
   }
 
   .video-arrow-right {
-    right: 10px;
+    right: 6px;
+  }
+
+  .video-arrow::before {
+    width: 10px;
+    height: 10px;
+    border-top-width: 3px;
+    border-right-width: 3px;
+  }
+
+  .video-card {
+    display: none;
+    width: min(100%, 360px);
+    margin-inline: auto;
+  }
+
+  .video-card.is-active {
+    display: block;
   }
 
   .video-dot {
     width: 11px;
     height: 11px;
+  }
+
+  .video-dots {
+    display: none;
+  }
+
+  .split-section {
+    overflow-x: hidden;
+  }
+
+  .split-section-inner,
+  .before,
+  .serving,
+  .before-grid,
+  .serving-headline > * {
+    min-width: 0;
+  }
+
+  .before,
+  .serving,
+  .compare-card {
+    max-width: 100%;
   }
 
   .contact-promo {
@@ -1530,8 +1625,8 @@ img {
   }
 
   .serving-headline {
-    grid-template-columns: 82px minmax(0, 1fr);
-    gap: 16px;
+    grid-template-columns: 1fr;
+    gap: 14px;
     margin-top: 24px;
   }
 
@@ -1540,11 +1635,12 @@ img {
   }
 
   .serving-headline h2 {
-    font-size: clamp(32px, 10.5vw, 52px);
+    font-size: clamp(30px, 10vw, 42px);
+    overflow-wrap: break-word;
   }
 
   .serving-copy {
-    margin: 20px 0 26px 98px;
+    margin: 20px 0 26px;
     font-size: 17px;
   }
 
