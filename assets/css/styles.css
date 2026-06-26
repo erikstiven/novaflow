@@ -262,38 +262,6 @@ img {
   background: rgba(2, 7, 11, .42);
 }
 
-.trust {
-  display: grid;
-  gap: 0;
-  border-top: 1px solid #d9e2ea;
-  border-bottom: 1px solid #d9e2ea;
-  background: #fff;
-}
-
-.trust article {
-  min-height: 150px;
-  padding: 28px 22px;
-  text-align: center;
-  border-bottom: 1px solid #d9e2ea;
-}
-
-.line-icon {
-  display: grid;
-  place-items: center;
-  width: 50px;
-  height: 50px;
-  margin: 0 auto 12px;
-  color: var(--blue-2);
-  filter: drop-shadow(0 0 6px rgba(22, 128, 255, .45));
-}
-
-.line-icon img {
-  width: 58px;
-  height: 58px;
-  object-fit: contain;
-}
-
-.trust h2,
 .color-card h3,
 .insured-box h3 {
   margin: 0 0 10px;
@@ -301,7 +269,6 @@ img {
   text-transform: uppercase;
 }
 
-.trust h2,
 .insured-box h3,
 .section-title h2,
 .section-heading h2,
@@ -310,7 +277,6 @@ img {
   color: #071827;
 }
 
-.trust p,
 .section-title p,
 .insured-box p,
 .contact-promo p {
@@ -1415,28 +1381,6 @@ img {
 
   .hero-actions {
     gap: 12px;
-  }
-
-  .trust article {
-    min-height: 0;
-    padding: 24px 22px;
-  }
-
-  .line-icon {
-    width: 44px;
-    height: 44px;
-    margin-bottom: 10px;
-  }
-
-  .line-icon img {
-    width: 50px;
-    height: 50px;
-  }
-
-  .trust p {
-    max-width: 280px;
-    margin-inline: auto;
-    font-size: 13px;
   }
 
   .section-heading {
@@ -3114,14 +3058,6 @@ img {
 }
 
 @media (min-width: 640px) {
-  .trust {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .trust article:nth-child(odd) {
-    border-right: 1px solid #d9e2ea;
-  }
-
   .contact-form {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3151,14 +3087,6 @@ img {
   .hero {
     min-height: 720px;
     padding: 88px 38px 54px;
-  }
-
-  .trust {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .trust article:nth-child(odd) {
-    border-right: 1px solid #d9e2ea;
   }
 
   .section,
@@ -3267,19 +3195,6 @@ img {
   .header-logo {
     width: 220px;
     height: 70px;
-  }
-
-  .trust {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .trust article {
-    border-bottom: 0;
-    border-right: 1px solid #d9e2ea;
-  }
-
-  .trust article:last-child {
-    border-right: 0;
   }
 
   .section,
