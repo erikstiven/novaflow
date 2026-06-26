@@ -486,7 +486,7 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
         </div>
 
         <div class="about-company-visual">
-          <img src="assets/images/seccion.jpeg" alt="NovaFlow Surfaces resin bound installation specialist">
+          <img src="assets/images/seccion nueva.png" alt="NovaFlow Surfaces resin bound installation specialist">
           <div class="about-experience-badge">
             <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 5 53 13v16c0 14-8 24-21 30C19 53 11 43 11 29V13l21-8Z"/><path d="m21 31 8 8 15-17"/></svg>
             <p><strong>9+ Years</strong><span>of construction &amp;<br>renovation experience</span></p>
@@ -621,7 +621,7 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
         </div>
 
         <aside class="maintenance-quote">
-          <img src="assets/images/seccion.jpeg" alt="Founder of NovaFlow Surfaces">
+          <img src="assets/images/seccion nueva - copia.png" alt="Founder of NovaFlow Surfaces">
           <blockquote>Resin Bound is designed to be beautiful, durable and low maintenance. With simple routine care, your surface can look great and perform exceptionally for years.</blockquote>
           <p>— <strong>Tiago</strong>, Founder of NovaFlow Surfaces</p>
         </aside>
