@@ -289,7 +289,6 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
 
     <nav class="main-nav" aria-label="Main navigation">
       <a class="active" href="#home">Home</a>
-      <a href="#services">Services</a>
       <a href="#colors">Colors</a>
       <a href="#projects">Projects</a>
       <a href="#about">About Us</a>
@@ -313,29 +312,6 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
           <a class="btn btn-outline hero-projects" href="#projects">View Projects</a>
         </div>
       </div>
-    </section>
-
-    <section class="trust" id="services" aria-label="Services">
-      <article>
-        <span class="line-icon" aria-hidden="true"><img src="assets/images/1.png" alt=""></span>
-        <h2>Fully Insured</h2>
-        <p>Complete protection for your peace of mind.</p>
-      </article>
-      <article>
-        <span class="line-icon" aria-hidden="true"><img src="assets/images/2.png" alt=""></span>
-        <h2>Premium Materials</h2>
-        <p>High performance products that stand the test of time.</p>
-      </article>
-      <article>
-        <span class="line-icon" aria-hidden="true"><img src="assets/images/3.png" alt=""></span>
-        <h2>Expert Installation</h2>
-        <p>Skilled craftsmanship with exceptional detail.</p>
-      </article>
-      <article>
-        <span class="line-icon" aria-hidden="true"><img src="assets/images/4.png" alt=""></span>
-        <h2>Residential & Commercial</h2>
-        <p>Beautiful surfaces for homes and businesses.</p>
-      </article>
     </section>
 
     <section class="section colors" id="colors">
@@ -734,7 +710,6 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
     <div class="quick-links">
       <h2>Quick Links</h2>
       <a href="#home">Home</a>
-      <a href="#services">Services</a>
       <a href="#colors">Colors</a>
       <a href="#projects">Projects</a>
       <a href="#about">About Us</a>
