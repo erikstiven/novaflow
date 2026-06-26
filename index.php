@@ -17,12 +17,12 @@ $formStatus = in_array($_GET['form'] ?? '', $allowedStatuses, true) ? $_GET['for
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $name = trim($_POST['name'] ?? '');
+  $company = trim($_POST['company'] ?? '');
   $phone = trim($_POST['phone'] ?? '');
   $email = trim($_POST['email'] ?? '');
-  $projectType = trim($_POST['project_type'] ?? '');
   $message = trim($_POST['message'] ?? '');
 
-  if ($name && $phone && filter_var($email, FILTER_VALIDATE_EMAIL) && $projectType && $message) {
+  if ($name && $phone && filter_var($email, FILTER_VALIDATE_EMAIL) && $message) {
     $mail = new PHPMailer(true);
 
     try {
@@ -48,9 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $mail->Subject = 'New estimate request - NovaFlow Surfaces';
       $plainBody = implode("\n", [
         "Name: {$name}",
+        "Company: {$company}",
         "Phone: {$phone}",
         "Email: {$email}",
-        "Project Type: {$projectType}",
         '',
         'Message:',
         $message,
@@ -70,16 +70,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   <td style="padding:10px 0;">' . htmlspecialchars($name) . '</td>
                 </tr>
                 <tr>
+                  <td style="padding:10px 0;color:#0f5ca8;font-weight:bold;">Company</td>
+                  <td style="padding:10px 0;">' . htmlspecialchars($company ?: 'Not provided') . '</td>
+                </tr>
+                <tr>
                   <td style="padding:10px 0;color:#0f5ca8;font-weight:bold;">Phone</td>
                   <td style="padding:10px 0;"><a style="color:#061016;text-decoration:none;" href="tel:' . htmlspecialchars($phone) . '">' . htmlspecialchars($phone) . '</a></td>
                 </tr>
                 <tr>
                   <td style="padding:10px 0;color:#0f5ca8;font-weight:bold;">Email</td>
                   <td style="padding:10px 0;"><a style="color:#061016;" href="mailto:' . htmlspecialchars($email) . '">' . htmlspecialchars($email) . '</a></td>
-                </tr>
-                <tr>
-                  <td style="padding:10px 0;color:#0f5ca8;font-weight:bold;">Project Type</td>
-                  <td style="padding:10px 0;">' . htmlspecialchars($projectType) . '</td>
                 </tr>
               </table>
               <div style="margin-top:22px;padding-top:18px;border-top:1px solid #d8e0e8;">
@@ -191,6 +191,67 @@ $colors = [
   ],
 ];
 
+$standardUses = [['Driveways', 'car'], ['Walkways', 'walk'], ['Patios', 'patio'], ['Pool Areas', 'pool']];
+$colorPresentation = [
+  'Apache' => [
+    'meaning' => 'Warm natural aggregate blend with rich earth tones and timeless character.',
+    'tonesTitle' => 'Color blend',
+    'tones' => ['Brown' => '#72401f', 'Copper' => '#a84410', 'Sand' => '#b89a72', 'Natural Stone' => '#3f3f3f'],
+  ],
+  'Black Diamond' => [
+    'meaning' => 'Deep black stones with bright mineral highlights.',
+    'tonesTitle' => 'Color tones',
+    'tones' => ['Black' => '#08090e', 'Silver' => '#c6c8ca'],
+  ],
+  'Caramel' => [
+    'tonesTitle' => 'Color blend',
+    'tones' => ['Golden' => '#eea900', 'Beige' => '#d9bd8d', 'Honey' => '#e6dcc4', 'Natural Stone' => '#4f3d30'],
+  ],
+  'Black Pearl' => [
+    'meaning' => 'Premium black and silver aggregate blend with natural contrast.',
+    'tonesTitle' => 'Color tones',
+    'tones' => ['Black' => '#111111', 'Charcoal' => '#545454', 'Silver' => '#b9bec4', 'Natural Stone' => '#8b6b4b'],
+  ],
+  'Coral' => [
+    'tonesTitle' => 'Color tones',
+    'tones' => ['Coral' => '#ef681d', 'Peach' => '#f3a06e', 'Beige' => '#dfcba6', 'Sand' => '#a6996d', 'Natural Stone' => '#665142'],
+  ],
+  'Dark Brown' => [
+    'tonesTitle' => 'Color tones',
+    'tones' => ['Chocolate' => '#4b2d20', 'Brown' => '#69422d', 'Amber' => '#a56427', 'Tan' => '#a78563', 'Charcoal' => '#292421'],
+  ],
+  'Grey Blend' => [
+    'tonesTitle' => 'Color tones',
+    'tones' => ['Grey' => '#7b7b7b', 'White' => '#e5e5e5', 'Beige' => '#d8bd8c', 'Charcoal' => '#505050', 'Natural Stone' => '#bd8c4d'],
+  ],
+  'Multicolor Flint' => [
+    'tonesTitle' => 'Color tones',
+    'tones' => ['Red' => '#951e1e', 'Brown' => '#854213', 'Black' => '#252525', 'Yellow' => '#f5ac00', 'Grey' => '#898989'],
+  ],
+  'Ozark' => [
+    'tonesTitle' => 'Color tones',
+    'tones' => ['Brown' => '#97501b', 'Tan' => '#c78b3c', 'Taupe' => '#a89680', 'Coffee' => '#705237', 'Charcoal' => '#37332f'],
+  ],
+  'Pearl' => [
+    'tonesTitle' => 'Color tones',
+    'tones' => ['White' => '#f5f5f3', 'Cream' => '#ead9ae', 'Light Grey' => '#c7c9c7', 'Grey' => '#858989', 'Charcoal' => '#283037'],
+  ],
+  'Mini Pearl' => [
+    'tonesTitle' => 'Color tones',
+    'tones' => ['White' => '#f5f5f3', 'Cream' => '#ead9c1', 'Light Grey' => '#d2d2d2', 'Grey' => '#888888', 'Charcoal' => '#292929'],
+  ],
+  'Razorback Red' => [
+    'tonesTitle' => 'Color tones',
+    'tones' => ['Red' => '#c51d13', 'Terracotta' => '#e33d12', 'Brown' => '#742a0c', 'Amber' => '#d37a00', 'Charcoal' => '#292929'],
+  ],
+];
+
+foreach ($colors as &$color) {
+  $color = array_merge($color, $colorPresentation[$color['name']]);
+  $color['ideal'] = $standardUses;
+}
+unset($color);
+
 $projects = [
   ['Driveways', 'car', 'assets/images/projects/1.jpg'],
   ['Pool Decks', 'waves', 'assets/images/projects/2.jpg'],
@@ -199,6 +260,7 @@ $projects = [
 ];
 
 $stylesVersion = file_exists(__DIR__ . '/assets/css/styles.css') ? filemtime(__DIR__ . '/assets/css/styles.css') : time();
+$responsiveStylesVersion = file_exists(__DIR__ . '/assets/css/responsive-fixes.css') ? filemtime(__DIR__ . '/assets/css/responsive-fixes.css') : time();
 $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR__ . '/assets/js/main.js') : time();
 ?>
 <!doctype html>
@@ -213,6 +275,7 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpeg">
   <link rel="stylesheet" href="assets/css/styles.css?v=<?= $stylesVersion ?>">
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css?v=<?= $responsiveStylesVersion ?>">
 </head>
 <body class="<?= $formStatus ? 'form-modal-open' : '' ?>">
   <header class="site-header">
@@ -281,6 +344,33 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
         <p>Explore our premium pebble flooring color options designed for any space.</p>
       </div>
 
+      <svg class="icon-sprite" aria-hidden="true">
+        <symbol id="icon-car" viewBox="0 0 64 64">
+          <path d="M13 29h38l-4-12a6 6 0 0 0-6-4H23a6 6 0 0 0-6 4l-4 12Z"/><path d="M10 31h44v18H10z"/><circle cx="19" cy="40" r="4"/><circle cx="45" cy="40" r="4"/><path d="M14 49v5m36-5v5"/>
+        </symbol>
+        <symbol id="icon-walk" viewBox="0 0 64 64">
+          <circle cx="36" cy="10" r="5"/><path d="m31 20 9 8 8 3m-17-11-7 12-8 5m18-8-3 11-10 14m13-14 9 7 5 9"/>
+        </symbol>
+        <symbol id="icon-patio" viewBox="0 0 64 64">
+          <path d="M9 25c4-14 42-14 46 0H9Zm23 0v29M17 39h30M20 39l-3 15m27-15 3 15M24 31h16"/>
+        </symbol>
+        <symbol id="icon-pool" viewBox="0 0 64 64">
+          <path d="M27 42V18a8 8 0 0 1 16 0m-16 8h16m-16 9h16M18 48c5-5 9 5 14 0s9 5 14 0 9 5 14 0M18 56c5-5 9 5 14 0s9 5 14 0 9 5 14 0"/>
+        </symbol>
+        <symbol id="icon-spark" viewBox="0 0 64 64">
+          <path d="M32 5c2 16 9 23 25 27-16 4-23 11-25 27-3-16-10-23-25-27 15-4 22-11 25-27Z"/>
+        </symbol>
+        <symbol id="icon-water" viewBox="0 0 64 64">
+          <path d="M18 8c-7 10-8 13-8 17a8 8 0 0 0 16 0c0-4-1-7-8-17Zm28 0c-7 10-8 13-8 17a8 8 0 0 0 16 0c0-4-1-7-8-17ZM7 44c6-5 10 5 16 0s10 5 16 0 10 5 18 0M7 54c6-5 10 5 16 0s10 5 16 0 10 5 18 0"/>
+        </symbol>
+        <symbol id="icon-sun" viewBox="0 0 64 64">
+          <circle cx="32" cy="32" r="12"/><path d="M32 3v10m0 38v10M3 32h10m38 0h10M11 11l7 7m28 28 7 7m0-42-7 7M18 46l-7 7"/>
+        </symbol>
+        <symbol id="icon-shield" viewBox="0 0 64 64">
+          <path d="M32 5 53 13v16c0 14-8 24-21 30C19 53 11 43 11 29V13l21-8Z"/><path d="m21 31 8 8 15-17"/>
+        </symbol>
+      </svg>
+
       <div class="color-carousel">
         <button class="color-arrow color-arrow-left" type="button" aria-label="Previous colors">&lsaquo;</button>
         <div class="color-track" aria-label="Pebble color carousel">
@@ -288,20 +378,43 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
           <article class="color-card">
             <button class="color-zoom" type="button" aria-label="Zoom <?= htmlspecialchars($color['name']) ?>">
               <img src="<?= htmlspecialchars($color['image']) ?>" alt="<?= htmlspecialchars($color['name']) ?>">
+              <span class="color-view-label" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m16.5 16.5 4 4"></path></svg>
+                View texture
+              </span>
             </button>
             <div class="color-card-body">
               <h3><?= htmlspecialchars($color['name']) ?></h3>
-              <div class="color-detail">
-                <span>Meaning</span>
-                <p><?= htmlspecialchars($color['meaning']) ?></p>
+              <p class="color-meaning"><?= htmlspecialchars($color['meaning']) ?></p>
+              <div class="color-specs">
+                <div class="color-tones">
+                  <h4><?= htmlspecialchars($color['tonesTitle']) ?></h4>
+                  <div class="tone-swatches" aria-label="Color tones">
+                    <?php foreach ($color['tones'] as $tone => $hex) : ?>
+                      <span class="tone-item">
+                        <span class="tone-swatch" style="--tone: <?= htmlspecialchars($hex) ?>" aria-hidden="true"></span>
+                        <span><?= htmlspecialchars($tone) ?></span>
+                      </span>
+                    <?php endforeach; ?>
+                  </div>
+                </div>
+                <div class="color-ideal">
+                  <h4>Ideal for</h4>
+                  <div class="ideal-grid">
+                    <?php foreach ($color['ideal'] as [$label, $icon]) : ?>
+                      <div class="ideal-item">
+                        <svg class="ideal-icon" aria-hidden="true"><use href="#icon-<?= htmlspecialchars($icon) ?>"></use></svg>
+                        <span><?= htmlspecialchars($label) ?></span>
+                      </div>
+                    <?php endforeach; ?>
+                  </div>
+                </div>
               </div>
-              <div class="color-detail">
-                <span>What it is</span>
-                <p><?= htmlspecialchars($color['what']) ?></p>
-              </div>
-              <div class="color-detail">
-                <span>Best use</span>
-                <p><?= htmlspecialchars($color['use']) ?></p>
+              <div class="color-benefits" aria-label="Product benefits">
+                <span><svg class="benefit-icon" aria-hidden="true"><use href="#icon-spark"></use></svg>Low<br>Maintenance</span>
+                <span><svg class="benefit-icon" aria-hidden="true"><use href="#icon-water"></use></svg>Permeable<br>Surface</span>
+                <span><svg class="benefit-icon" aria-hidden="true"><use href="#icon-sun"></use></svg>UV<br>Resistant</span>
+                <span><svg class="benefit-icon" aria-hidden="true"><use href="#icon-shield"></use></svg>Built to<br>Last</span>
               </div>
             </div>
           </article>
@@ -356,7 +469,56 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
       </div>
     </section>
 
-    <section class="section split-section" id="about">
+    <section class="about-company" id="about">
+      <div class="about-company-main">
+        <div class="about-company-copy">
+          <p class="about-company-kicker"><span></span> About NovaFlow Surfaces</p>
+          <h2>Built on Experience.<br><strong>Focused on<br>Resin Bound.</strong></h2>
+          <span class="about-company-line"></span>
+          <p>NovaFlow Surfaces was founded with a clear vision: to provide high-quality Resin Bound installations backed by real-world construction and renovation experience.</p>
+          <p>For more than nine years, we have been involved in property improvement and renovation projects, building a strong reputation based on quality workmanship, attention to detail, and commitment to every client.</p>
+          <p>Today, we combine that experience with premium materials and professional installation processes to create modern, durable, and visually appealing surfaces for residential and commercial properties.</p>
+          <p>Our goal is simple: deliver surfaces that combine beauty, durability, and long-term performance while helping clients enhance the appearance and value of their properties.</p>
+          <p class="about-company-location">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Headquartered in <strong>New York</strong>, serving residential and commercial clients throughout the United States.</span>
+          </p>
+        </div>
+
+        <div class="about-company-visual">
+          <img src="assets/images/seccion nueva.png" alt="NovaFlow Surfaces resin bound installation specialist">
+          <div class="about-experience-badge">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 5 53 13v16c0 14-8 24-21 30C19 53 11 43 11 29V13l21-8Z"/><path d="m21 31 8 8 15-17"/></svg>
+            <p><strong>9+ Years</strong><span>of construction &amp;<br>renovation experience</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-company-benefits">
+        <article>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 5 53 13v16c0 14-8 24-21 30C19 53 11 43 11 29V13l21-8Z"/><path d="m21 31 8 8 15-17"/></svg>
+          <h3>9+ Years of Experience</h3>
+          <p>Proven construction and renovation experience you can trust.</p>
+        </article>
+        <article>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="m32 5 24 15-24 39L8 20 32 5Zm-24 15h48M20 20l12 39 12-39M32 5v54"/></svg>
+          <h3>Premium Materials</h3>
+          <p>High-quality materials for long-lasting beauty and performance.</p>
+        </article>
+        <article>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 29h22v27H8zM13 9h12v20H13zm27 21 16 12v14H30V38l10-8Z"/><path d="M17 14h4m-4 7h4m-8 16h5m-5 8h5m24 2h6"/></svg>
+          <h3>Residential &amp; Commercial</h3>
+          <p>Solutions tailored for homes, businesses, and multi-property projects.</p>
+        </article>
+        <article>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 17c11-7 38-7 48 4-4 2-5 7-8 8l-4-3-5 5 2 5-7 5-5-2-4 5-8-4-5-9-4-3Z"/></svg>
+          <h3>Nationwide Service</h3>
+          <p>Serving clients across the United States with reliable service.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split-section">
       <div class="split-section-inner">
         <div class="before">
           <h2>Before & After</h2>
@@ -410,23 +572,147 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
       </div>
     </section>
 
-    <section class="section image-section" aria-label="Resin bound maintenance">
-      <div class="image-section-title">
-        <span></span>
-        <div>
-          <h2>Resin Bound Care &amp; Maintenance</h2>
-          <p>Simple steps to keep your surface looking its best.</p>
+    <section class="maintenance-guide" aria-labelledby="maintenance-title">
+      <div class="maintenance-inner">
+        <div class="maintenance-content">
+          <p class="maintenance-brand">NovaFlow <span>Surfaces</span></p>
+          <span class="maintenance-rule"></span>
+          <h2 id="maintenance-title">Resin Bound <strong>Maintenance</strong></h2>
+          <p class="maintenance-subtitle">Simple steps to keep your surface <strong>beautiful</strong> for years.</p>
+
+          <div class="maintenance-steps">
+            <article>
+              <span class="maintenance-icon">
+                <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M39 9 24 44"/><path d="M18 44h26l-4 11H22z"/><path d="M18 51c-3 0-5-1-8-3m18 3c-3 0-5-1-8-3m28 3c-3 0-5-1-8-3"/></svg>
+              </span>
+              <div>
+                <h3>Regular Sweeping</h3>
+                <p>Remove leaves, dirt and debris.</p>
+              </div>
+            </article>
+            <article>
+              <span class="maintenance-icon">
+                <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 7C22 20 16 30 16 39a16 16 0 0 0 32 0C48 30 42 20 32 7Z"/></svg>
+              </span>
+              <div>
+                <h3>Occasional Washing</h3>
+                <p>Rinse with clean water when needed.</p>
+              </div>
+            </article>
+            <article>
+              <span class="maintenance-icon">
+                <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M51 12C27 12 13 26 13 49c23 0 38-14 38-37Z"/><path d="M18 45c9-9 17-17 29-26"/></svg>
+              </span>
+              <div>
+                <h3>Prevent Build-Up</h3>
+                <p>Keep moss, algae and organic matter under control.</p>
+              </div>
+            </article>
+            <article>
+              <span class="maintenance-icon">
+                <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 52 14v15c0 13-8 23-20 29C20 52 12 42 12 29V14l20-8Z"/></svg>
+              </span>
+              <div>
+                <h3>Protect Performance</h3>
+                <p>Maintain proper drainage and appearance.</p>
+              </div>
+            </article>
+          </div>
         </div>
+
+        <aside class="maintenance-quote">
+          <img src="assets/images/seccion nueva - copia.png" alt="Founder of NovaFlow Surfaces">
+          <blockquote>Resin Bound is designed to be beautiful, durable and low maintenance. With simple routine care, your surface can look great and perform exceptionally for years.</blockquote>
+          <p>— <strong>Tiago</strong>, Founder of NovaFlow Surfaces</p>
+        </aside>
+      </div>
+
+    </section>
+
+    <section class="reviews" aria-labelledby="reviews-title">
+      <div class="reviews-tagline">
+        <span></span>
+        <p>Beautiful Surfaces. <strong>Built to Last.</strong></p>
         <span></span>
       </div>
-      <img src="assets/images/seccion.jpeg" alt="Resin Bound maintenance tips from NovaFlow Surfaces">
+
+      <div class="reviews-inner">
+        <p class="reviews-kicker"><span></span> Client Reviews <span></span></p>
+        <h2 id="reviews-title">What Our <strong>Clients Say</strong></h2>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-rating" aria-label="5 out of 5 stars">★★★★★ <b>”</b></div>
+            <blockquote>“Excellent communication and attention to detail. The entire process was professional from start to finish. The result is absolutely beautiful.”</blockquote>
+            <footer>
+              <span class="review-avatar">J</span>
+              <p><strong>James R.</strong><small>Homeowner, NY</small></p>
+            </footer>
+          </article>
+
+          <article class="review-card">
+            <div class="review-rating" aria-label="5 out of 5 stars">★★★★★ <b>”</b></div>
+            <blockquote>“High-quality workmanship and outstanding customer service. They delivered exactly what they promised and more. Highly recommended.”</blockquote>
+            <footer>
+              <span class="review-avatar">M</span>
+              <p><strong>Michael T.</strong><small>Property Manager, FL</small></p>
+            </footer>
+          </article>
+
+          <article class="review-card">
+            <div class="review-rating" aria-label="5 out of 5 stars">★★★★★ <b>”</b></div>
+            <blockquote>“The finished surface exceeded our expectations. The team was reliable, professional, and very easy to work with. Great experience overall.”</blockquote>
+            <footer>
+              <span class="review-avatar">S</span>
+              <p><strong>Sarah L.</strong><small>Homeowner, CA</small></p>
+            </footer>
+          </article>
+        </div>
+
+        <a class="reviews-cta" href="#contact">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6.5 6.5l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.5.6A2 2 0 0 1 22 16.9z"/></svg>
+          Get Your Free Estimate Today
+        </a>
+      </div>
     </section>
 
     <section class="contact" id="contact">
+      <div class="contact-main">
+        <div class="contact-intro">
+        <p class="contact-kicker"><span>N</span> Contact Us</p>
+        <h2>Get <strong>Started</strong></h2>
+        <p class="contact-lead">No guesswork. No pressure. Just real answers and a clear path forward with our 3-step process.</p>
+        <ol class="contact-steps">
+          <li><span>1</span>Consultation &amp; Discovery</li>
+          <li><span>2</span>Site Visit &amp; Scope</li>
+          <li><span>3</span>Execute with Excellence</li>
+        </ol>
+        <div class="contact-assurances">
+          <div><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M17 17h30v38H17zM25 17v-5h14v5M25 34h14M32 27v14"/></svg><span>Free<br>Estimates</span></div>
+          <div><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 52 14v15c0 14-8 23-20 29C20 52 12 43 12 29V14l20-8Z"/><path d="m22 31 7 7 14-17"/></svg><span>Fully<br>Insured</span></div>
+          <div><svg viewBox="0 0 64 64" aria-hidden="true"><path d="m10 31 22-20 22 20M16 27v28h32V27M25 55V38h14v17"/></svg><span>Residential &amp;<br>Commercial</span></div>
+          <div><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 17c11-7 38-7 48 4-4 2-5 7-8 8l-4-3-5 5 2 5-7 5-5-2-4 5-8-4-5-9-4-3Z"/></svg><span>Nationwide<br>Service</span></div>
+        </div>
+        </div>
+
+        <form class="contact-form" action="" method="post">
+        <label>Name <b>*</b><input type="text" name="name" required></label>
+        <label>Company<input type="text" name="company"></label>
+        <label>Email <b>*</b><input type="email" name="email" required></label>
+        <label>Phone <b>*</b><input type="tel" name="phone" required></label>
+        <label class="contact-message">Tell us about your project <b>*</b><textarea name="message" required></textarea></label>
+        <button class="btn btn-primary form-submit" type="submit">Submit</button>
+        <p class="contact-security">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          Your information is secure and will never be shared.
+        </p>
+        </form>
+      </div>
+
       <div class="contact-info">
-        <a class="contact-link" href="tel:5187207248">
+        <a class="contact-link" href="tel:+15187207248">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6.5 6.5l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.5.6A2 2 0 0 1 22 16.9z"/></svg>
-          <span><strong>Call Us</strong>518-720-7248</span>
+          <span><strong>Call Us</strong>1-518-720-7248</span>
         </a>
         <a class="contact-link" href="mailto:novaflowsurfaces@gmail.com">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
@@ -434,30 +720,8 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
         </a>
         <address class="contact-link">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/><path d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-          <span><strong>Visit Us</strong>950 New Loudon Rd,<br>Latham, NY 12144</span>
+          <span><strong>Visit Us</strong>950 New Loudon Rd, Latham, NY 12144</span>
         </address>
-      </div>
-
-      <form class="contact-form" action="" method="post">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="tel" name="phone" placeholder="Phone Number" required>
-        <input type="email" name="email" placeholder="Email Address" required>
-        <select name="project_type" required>
-          <option value="" disabled selected>Project Type</option>
-          <option value="Driveways">Driveways</option>
-          <option value="Pool Decks">Pool Decks</option>
-          <option value="Patios">Patios</option>
-          <option value="Walkways">Walkways</option>
-          <option value="Commercial">Commercial</option>
-        </select>
-        <textarea name="message" placeholder="Tell us about your project..." required></textarea>
-        <button class="btn btn-primary form-submit" type="submit">Send Message</button>
-      </form>
-
-      <div class="contact-promo">
-        <h2>Ready to Transform Your Space?</h2>
-        <p>Let's build something beautiful together.</p>
-        <a class="btn btn-primary" href="tel:+15187207248">Request Free Estimate <span class="link-icon" aria-hidden="true"></span></a>
       </div>
     </section>
   </main>

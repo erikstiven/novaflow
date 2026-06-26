@@ -1,5 +1,10 @@
 {
+    "name": "novaflow/surfaces-website",
+    "description": "Corporate website and estimate request form for NovaFlow Surfaces.",
+    "type": "project",
+    "license": "proprietary",
     "require": {
+        "php": ">=8.1",
         "phpmailer/phpmailer": "^7.1"
     }
 }

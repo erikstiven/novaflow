@@ -1,8 +1,8 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteRule ^vendor/ - [F,L]
-</IfModule>
+Options -Indexes
 
-<FilesMatch "^(composer\.(json|lock)|\.env.*)$">
+<FilesMatch "^\.|^(composer\.(json|lock)|README\.md)$">
   Require all denied
 </FilesMatch>
+
+RewriteEngine On
+RewriteRule ^vendor/ - [F,L,NC]
