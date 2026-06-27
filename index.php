@@ -107,84 +107,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $colors = [
   [
     'name' => 'Apache',
-    'image' => 'assets/images/colors/3.jpg',
+    'image' => 'assets/images/colors/apache.jpg',
     'meaning' => 'Warm natural character with an earthy, welcoming finish.',
     'what' => 'A mixed pebble blend with brown, beige, red and black tones.',
     'use' => 'Ideal for patios, walkways, pool borders and decorative floors.',
   ],
   [
     'name' => 'Black Diamond',
-    'image' => 'assets/images/colors/4.jpg',
+    'image' => 'assets/images/colors/black_diamond.jpg',
     'meaning' => 'Modern elegance with a premium high-contrast look.',
     'what' => 'Deep black stones with bright mineral highlights.',
     'use' => 'Best for contemporary interiors, commercial spaces and accents.',
   ],
   [
     'name' => 'Caramel',
-    'image' => 'assets/images/colors/5.jpg',
+    'image' => 'assets/images/colors/caramel.png',
     'meaning' => 'Warmth, comfort and a soft natural feel.',
     'what' => 'Golden, beige and honey-toned pebble blend.',
     'use' => 'Great for residential patios, terraces and pool edges.',
   ],
   [
     'name' => 'Black Pearl',
-    'image' => 'assets/images/colors/6.jpg',
+    'image' => 'assets/images/colors/black_pearl.png',
     'meaning' => 'Sophisticated depth with a refined natural texture.',
     'what' => 'Dark stones with grey, white and brown accents.',
     'use' => 'Ideal for modern interiors, terraces and commercial floors.',
   ],
   [
     'name' => 'Coral',
-    'image' => 'assets/images/colors/1.jpg',
+    'image' => 'assets/images/colors/coral.png',
     'meaning' => 'Fresh energy inspired by coastal spaces.',
     'what' => 'Soft coral, peach, beige and light pebble tones.',
     'use' => 'Perfect for pool decks, relaxing patios and outdoor areas.',
   ],
   [
-    'name' => 'Dark Brown',
-    'image' => 'assets/images/colors/2.jpg',
-    'meaning' => 'Stable, grounded and naturally durable.',
-    'what' => 'Dark brown, chocolate and amber pebble mix.',
-    'use' => 'Strong option for entrances, terraces and high-traffic areas.',
-  ],
-  [
     'name' => 'Grey Blend',
-    'image' => 'assets/images/colors/7.jpg',
+    'image' => 'assets/images/colors/grey_blend.png',
     'meaning' => 'Clean balance with a neutral modern profile.',
     'what' => 'Grey, white, beige and charcoal stone mix.',
     'use' => 'Great for minimal patios, pool areas and contemporary spaces.',
   ],
   [
     'name' => 'Multicolor Flint',
-    'image' => 'assets/images/colors/8.jpg',
+    'image' => 'assets/images/colors/multicolor_flint.png',
     'meaning' => 'Natural variety, movement and visual character.',
     'what' => 'Red, brown, black, yellow and grey pebble tones.',
     'use' => 'Ideal for rustic exteriors and surfaces that need contrast.',
   ],
   [
     'name' => 'Ozark',
-    'image' => 'assets/images/colors/9.jpg',
+    'image' => 'assets/images/colors/ozark.png',
     'meaning' => 'Strength, durability and a classic natural look.',
     'what' => 'Earth-toned stones with rustic texture.',
     'use' => 'Perfect for walkways, terraces and natural-style projects.',
   ],
   [
     'name' => 'Pearl',
-    'image' => 'assets/images/colors/10.jpg',
+    'image' => 'assets/images/colors/pearl.png',
     'meaning' => 'Bright, clean and refined simplicity.',
     'what' => 'Light stones in white, cream and soft grey tones.',
     'use' => 'Best for interiors, pool areas and bright minimalist spaces.',
   ],
   [
     'name' => 'Mini Pearl',
-    'image' => 'assets/images/colors/11.jpg',
+    'image' => 'assets/images/colors/mini_pearl.png',
     'meaning' => 'Delicate detail with a smooth, even look.',
     'what' => 'Small light stones with fine texture.',
     'use' => 'Ideal for showers, pool borders and anti-slip surfaces.',
   ],
   [
     'name' => 'Razorback Red',
-    'image' => 'assets/images/colors/12.jpg',
+    'image' => 'assets/images/colors/razorback_red.png',
     'meaning' => 'Bold energy with a distinctive warm finish.',
     'what' => 'Red, terracotta, brown and amber pebble mix.',
     'use' => 'Great for exterior accents, entrances and standout terraces.',
@@ -215,10 +208,6 @@ $colorPresentation = [
   'Coral' => [
     'tonesTitle' => 'Color tones',
     'tones' => ['Coral' => '#ef681d', 'Peach' => '#f3a06e', 'Beige' => '#dfcba6', 'Sand' => '#a6996d', 'Natural Stone' => '#665142'],
-  ],
-  'Dark Brown' => [
-    'tonesTitle' => 'Color tones',
-    'tones' => ['Chocolate' => '#4b2d20', 'Brown' => '#69422d', 'Amber' => '#a56427', 'Tan' => '#a78563', 'Charcoal' => '#292421'],
   ],
   'Grey Blend' => [
     'tonesTitle' => 'Color tones',
@@ -462,7 +451,7 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
         </div>
 
         <div class="about-company-visual">
-          <img src="assets/images/seccion nueva.png" alt="NovaFlow Surfaces resin bound installation specialist">
+          <img src="assets/images/seccion nueva.jpeg" alt="NovaFlow Surfaces resin bound installation specialist">
           <div class="about-experience-badge">
             <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 5 53 13v16c0 14-8 24-21 30C19 53 11 43 11 29V13l21-8Z"/><path d="m21 31 8 8 15-17"/></svg>
             <p><strong>9+ Years</strong><span>of construction &amp;<br>renovation experience</span></p>
@@ -605,53 +594,6 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
 
     </section>
 
-    <section class="reviews" aria-labelledby="reviews-title">
-      <div class="reviews-tagline">
-        <span></span>
-        <p>Beautiful Surfaces. <strong>Built to Last.</strong></p>
-        <span></span>
-      </div>
-
-      <div class="reviews-inner">
-        <p class="reviews-kicker"><span></span> Client Reviews <span></span></p>
-        <h2 id="reviews-title">What Our <strong>Clients Say</strong></h2>
-
-        <div class="reviews-grid">
-          <article class="review-card">
-            <div class="review-rating" aria-label="5 out of 5 stars">★★★★★ <b>”</b></div>
-            <blockquote>“Excellent communication and attention to detail. The entire process was professional from start to finish. The result is absolutely beautiful.”</blockquote>
-            <footer>
-              <span class="review-avatar">J</span>
-              <p><strong>James R.</strong><small>Homeowner, NY</small></p>
-            </footer>
-          </article>
-
-          <article class="review-card">
-            <div class="review-rating" aria-label="5 out of 5 stars">★★★★★ <b>”</b></div>
-            <blockquote>“High-quality workmanship and outstanding customer service. They delivered exactly what they promised and more. Highly recommended.”</blockquote>
-            <footer>
-              <span class="review-avatar">M</span>
-              <p><strong>Michael T.</strong><small>Property Manager, FL</small></p>
-            </footer>
-          </article>
-
-          <article class="review-card">
-            <div class="review-rating" aria-label="5 out of 5 stars">★★★★★ <b>”</b></div>
-            <blockquote>“The finished surface exceeded our expectations. The team was reliable, professional, and very easy to work with. Great experience overall.”</blockquote>
-            <footer>
-              <span class="review-avatar">S</span>
-              <p><strong>Sarah L.</strong><small>Homeowner, CA</small></p>
-            </footer>
-          </article>
-        </div>
-
-        <a class="reviews-cta" href="#contact">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6.5 6.5l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.5.6A2 2 0 0 1 22 16.9z"/></svg>
-          Get Your Free Estimate Today
-        </a>
-      </div>
-    </section>
-
     <section class="contact" id="contact">
       <div class="contact-main">
         <div class="contact-intro">
@@ -698,6 +640,53 @@ $scriptsVersion = file_exists(__DIR__ . '/assets/js/main.js') ? filemtime(__DIR_
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/><path d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
           <span><strong>Visit Us</strong>950 New Loudon Rd, Latham, NY 12144</span>
         </address>
+      </div>
+    </section>
+
+    <section class="reviews" aria-labelledby="reviews-title">
+      <div class="reviews-tagline">
+        <span></span>
+        <p>Beautiful Surfaces. <strong>Built to Last.</strong></p>
+        <span></span>
+      </div>
+
+      <div class="reviews-inner">
+        <p class="reviews-kicker"><span></span> Client Reviews <span></span></p>
+        <h2 id="reviews-title">What Our <strong>Clients Say</strong></h2>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-rating" aria-label="5 out of 5 stars">★★★★★ <b>"</b></div>
+            <blockquote>"Excellent communication and attention to detail. The entire process was professional from start to finish. The result is absolutely beautiful."</blockquote>
+            <footer>
+              <span class="review-avatar">J</span>
+              <p><strong>James R.</strong><small>Homeowner, NY</small></p>
+            </footer>
+          </article>
+
+          <article class="review-card">
+            <div class="review-rating" aria-label="5 out of 5 stars">★★★★★ <b>"</b></div>
+            <blockquote>"High-quality workmanship and outstanding customer service. They delivered exactly what they promised and more. Highly recommended."</blockquote>
+            <footer>
+              <span class="review-avatar">M</span>
+              <p><strong>Michael T.</strong><small>Property Manager, FL</small></p>
+            </footer>
+          </article>
+
+          <article class="review-card">
+            <div class="review-rating" aria-label="5 out of 5 stars">★★★★★ <b>"</b></div>
+            <blockquote>"The finished surface exceeded our expectations. The team was reliable, professional, and very easy to work with. Great experience overall."</blockquote>
+            <footer>
+              <span class="review-avatar">S</span>
+              <p><strong>Sarah L.</strong><small>Homeowner, CA</small></p>
+            </footer>
+          </article>
+        </div>
+
+        <a class="reviews-cta" href="#contact">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6.5 6.5l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.5.6A2 2 0 0 1 22 16.9z"/></svg>
+          Get Your Free Estimate Today
+        </a>
       </div>
     </section>
   </main>
